@@ -1,2 +1,11 @@
 .applied-badge { background: #e3f2e5; color: #246b47; border-radius: 5px; padding: 4px 6px; font: 500 8px 'DM Mono'; }
 .sent-at { display: block; margin-top: 7px !important; color: #47765a !important; font: 500 9px 'DM Mono' !important; }
+.attachment-panel { margin-top: 14px; padding: 13px; border: 1px dashed #b8cebe; border-radius: 8px; background: #f8fbf8; }
+.attachment-panel > div { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.attachment-panel b,.attachment-panel small { display:block; font-size:11px; }
+.attachment-panel small { color:#65766c; font-size:10px; margin-top:3px; }
+.file-picker { display:inline-block; margin-top:11px; padding:7px 9px; border-radius:6px; background:#e2f0e4; color:#246b47; font:700 10px Manrope; cursor:pointer; }
+.attached-files { list-style:none; padding:0; margin:9px 0 0; }
+.attached-files li { display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-top:1px solid #e2eae3; color:#34483a; font-size:10px; }
+.attached-files .empty-files { color:#7e8c83; }
+.attached-files button { border:0; background:none; color:#a24c45; cursor:pointer; font:700 10px Manrope; }
