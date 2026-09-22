@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#122018" />
+    <title>Career Agent — Германия</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="interactions.css" />
+    <link rel="stylesheet" href="application-status.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#dashboard"><span class="brand-mark">↗</span><span>career<span>agent</span></span></a>
+        <nav class="nav" aria-label="Основная навигация">
+          <button class="nav-item active" data-page="dashboard"><span>▦</span>Обзор</button>
+          <button class="nav-item" data-page="vacancies"><span>⌘</span>Вакансии <b id="nav-count">12</b></button>
+          <button class="nav-item" data-page="tracker"><span>◌</span>Отклики</button>
+          <button class="nav-item" data-page="profile"><span>◫</span>Профиль</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sync-status"><i></i><span>Синхронизация<br /><small>сегодня, 09:42</small></span></div>
+          <button class="user-card" data-page="profile"><span class="avatar">AN</span><span>Alizhan Nurzhan<small>Настройки профиля</small></span><span>›</span></button>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar"><button class="mobile-menu" aria-label="Меню">☰</button><div class="breadcrumbs"><span id="crumb">Обзор</span><span>/</span><strong id="crumb-detail">Сегодня</strong></div><div class="top-actions"><button class="icon-button" title="Уведомления">♧<i></i></button><button class="sync-button" id="syncButton"><span>↻</span>Обновить вакансии</button></div></header>
+
+        <section class="page active" id="dashboard">
+          <div class="hero"><div><p class="eyebrow">ДОБРОЕ УТРО, ALIZHAN</p><h1>Новые возможности<br />рядом с вами.</h1><p class="hero-text">Мы нашли вакансии в радиусе 40 км от Heidelberg, которые подходят вашему профилю.</p></div><div class="hero-illustration" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="route route-one"></div><div class="route route-two"></div><span class="pin pin-a">+</span><span class="pin pin-b">+</span><span class="pin pin-c">+</span></div></div>
+          <div class="stat-grid"><button class="stat-card" data-stat-action="new" aria-label="Открыть новые вакансии"><span class="stat-icon leaf">✦</span><div><b>12</b><span>новых вакансий</span></div><small>+4 за неделю</small><span class="stat-arrow">→</span></button><button class="stat-card" data-stat-action="matches" aria-label="Открыть вакансии с высоким совпадением"><span class="stat-icon purple">◈</span><div><b>5</b><span>высоких совпадений</span></div><small>оценка 70+%</small><span class="stat-arrow">→</span></button><button class="stat-card" data-stat-action="drafts" aria-label="Открыть готовые черновики"><span class="stat-icon orange">↗</span><div><b>3</b><span>черновика готовы</span></div><small>нужна проверка</small><span class="stat-arrow">→</span></button></div>
+          <div class="section-heading"><div><p class="eyebrow">ПОДОБРАНО ДЛЯ ВАС</p><h2>Лучшие совпадения</h2></div><button class="text-button" data-page="vacancies">Все вакансии <span>→</span></button></div>
+          <div class="featured-list" id="featuredList"></div>
+        </section>
+
+        <section class="page" id="vacancies">
+          <div class="page-title"><div><p class="eyebrow">12 ВАКАНСИЙ</p><h1>Подходящие вакансии</h1><p>Офис и гибрид · Heidelberg, Mannheim + 40 км</p></div><button class="filter-toggle" id="filterToggle">☷ Фильтры</button></div>
+          <div class="filter-bar" id="filterBar"><label class="search"><span>⌕</span><input id="jobSearch" placeholder="Должность или компания" /></label><select id="typeFilter"><option value="all">Все типы</option><option value="Werkstudent">Working student</option><option value="Praktikum">Стажировки</option><option value="Ehrenamt">Волонтёрство</option></select><select id="formatFilter"><option value="all">Офис и гибрид</option><option value="Hybrid">Гибрид</option><option value="Office">Офис</option></select><select id="sortJobs"><option value="score">По соответствию</option><option value="date">Сначала новые</option><option value="distance">По расстоянию</option></select></div>
+          <p class="filter-note">Полностью удалённые вакансии и online-формат исключены.</p><div class="job-grid" id="jobGrid"></div>
+        </section>
+
+        <section class="page" id="tracker">
+          <div class="page-title"><div><p class="eyebrow">ВАШ ПРОЦЕСС</p><h1>Трекер откликов</h1><p>Все отправки выполняете вы — мы помогаем не потерять контекст.</p></div><button class="outline-button" id="addTracker">+ Добавить вакансию</button></div>
+          <div class="kanban" id="kanban"></div>
+        </section>
+
+        <section class="page" id="profile">
+          <div class="page-title"><div><p class="eyebrow">ПРОФИЛЬ КАНДИДАТА</p><h1>Ваши параметры поиска</h1><p>Эти данные использует AI для подбора и черновиков писем.</p></div><button class="solid-button" id="saveProfile">Сохранить изменения</button></div>
+          <form class="profile-layout" id="profileForm"><div class="profile-card profile-main"><div class="profile-head"><span class="avatar large">AN</span><div><h2>Alizhan Nurzhan</h2><p>International Business Administration</p></div><button type="button" class="text-button">Заменить резюме</button></div><div class="resume-box"><span>▤</span><div><b>Alizhan_Nurzhan_CV_.pdf</b><small>Загружено · 1 страница · Извлечено и проверено</small></div><button type="button">⋮</button></div><div class="form-row"><label>Дата доступности<input value="Подтвердить перед откликом" /></label><label>Часов в неделю<select><option>По договорённости</option><option>20 часов</option><option>Полный день</option></select></label></div><label>О себе<textarea rows="5">Business development · Marketing · Sales · Customer acquisition · Digital content · AI tools</textarea></label></div><aside class="profile-card preferences"><h3>Предпочтения</h3><label>Базовая локация<input value="Heidelberg, Germany" /></label><label>Радиус поиска <output id="radiusOut">40 км</output><input id="radius" type="range" min="10" max="70" value="40" /></label><fieldset><legend>Формат работы</legend><label class="check"><input checked type="checkbox" /> Офис</label><label class="check"><input checked type="checkbox" /> Гибрид</label><label class="check disabled"><input type="checkbox" disabled /> Полностью удалённо</label></fieldset><fieldset><legend>Тип вакансий</legend><label class="check"><input checked type="checkbox" /> Working student</label><label class="check"><input checked type="checkbox" /> Internship / Praktikum</label><label class="check"><input checked type="checkbox" /> Volunteer / Ehrenamt</label></fieldset></aside></form>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="jobDialog"><button class="dialog-close" data-close>×</button><div id="dialogContent"></div></dialog>
+    <dialog id="draftDialog"><button class="dialog-close" data-close>×</button><div class="draft-dialog"><p class="eyebrow">ЧЕРНОВИК ОТКЛИКА</p><h2 id="draftTitle">Сопроводительное письмо</h2><p class="privacy-note">⚿ В текст переданы только подтверждённые данные профиля. Проверьте его перед отправкой.</p><div class="draft-toolbar"><select id="letterLanguage"><option>Deutsch</option><option>English</option></select><button id="copyDraft">▣ Скопировать</button></div><textarea id="draftText" rows="16"></textarea><div class="resume-attachment"><div><b>1. Прикрепите резюме к отклику</b><small>Скачайте PDF и загрузите его на сайте работодателя.</small></div><a id="downloadResume" href="output/pdf/Alizhan_Nurzhan_Resume_2026.pdf" download>↓ Скачать резюме PDF</a></div><label class="attach-confirm"><input id="resumeAttached" type="checkbox" /> Я прикрепил(а) резюме к отклику</label><div class="dialog-actions"><button class="outline-button" data-close>Вернуться</button><button class="solid-button" id="markApplied" disabled>Отметить как отправлено вручную</button></div></div></dialog>
+    <div class="toast" id="toast"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+/* Interactive states for dashboard controls. */
+.stat-card {
+  width: 100%;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+}
+
+.stat-card:hover,
+.stat-card:focus-visible {
+  border-color: #83b996;
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.stat-card:focus-visible { box-shadow: 0 0 0 3px #bde9c8; }
+.stat-arrow { display: none; color: #226b49; font-size: 18px; margin-left: 5px; }
+.stat-card:hover .stat-arrow,
+.stat-card:focus-visible .stat-arrow { display: block; }
